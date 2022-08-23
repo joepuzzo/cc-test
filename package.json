@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "firmata": "^0.19.1",
-    "johnny-five": "^0.13.0"
+    "firmata": "^2.3.0",
+    "johnny-five": "^2.1.0"
   }
 }
