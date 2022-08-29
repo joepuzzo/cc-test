@@ -4,6 +4,9 @@ var board = new five.Board();
 //var Board = require("firmata");
 //var board = new Board();
 
+const ENABLED = true;
+const DISABLED = !ENABLED;
+
 board.on("ready", function () {
 
   /*let stepper = new five.Stepper({
@@ -21,9 +24,10 @@ board.on("ready", function () {
 		stepPin: 0,
 		directionPin: 1,
     enablePin: 12,
+    invertPins: [12]
  	});
 
-  board.io.accelStepperEnable(0, true)
+  board.io.accelStepperEnable(0, ENABLED)
 
   this.repl.inject({
     step: ( steps = 1600, direction = 1, speed = 1000 ) => {
@@ -40,10 +44,10 @@ board.on("ready", function () {
       console.log( this.io.accelStepperReportPosition(0) );
     },
 		enable: () => {
-			this.io.accelStepperEnable(0, true)
+			this.io.accelStepperEnable(0, ENABLED)
     },
     disable: () => {
-			this.io.accelStepperEnable(0, false)
+			this.io.accelStepperEnable(0, DISABLED)
     },
     zero: () => {
       this.io.accelStepperZero(0);
