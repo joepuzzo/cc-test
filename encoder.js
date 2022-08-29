@@ -1,20 +1,19 @@
 var five = require("johnny-five");
 var board = new five.Board();
 
-
 board.on("ready", function () {
 
   board.io.encoderAttach({
     encoderNum: 1,
-    encoderPin1: 2,
-    encoderPin2: 4,
+    encoderPin1: 21,
+    encoderPin2: 22,
  	});
 
   board.io.on('encoder-position-1', (event)=>{
     console.log(event);
   });
 
-  board.io.encoderEnableReporting(false)
+  board.io.encoderEnableReporting(true)
 
   // setInterval(() =>{
   //   board.io.encoderReport(1, (event)=>{
