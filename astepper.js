@@ -18,12 +18,12 @@ board.on("ready", function () {
   board.io.accelStepperConfig({
 		deviceNum: 0,
 		type: this.io.STEPPER.TYPE.DRIVER,
-		stepPin: 3,
-		directionPin: 2,
-    enablePin: 1,
+		stepPin: 0,
+		directionPin: 1,
+    enablePin: 12,
  	});
 
-  board.io.accelStepperEnable(0, false)
+  board.io.accelStepperEnable(0, true)
 
   this.repl.inject({
     step: ( steps = 1600, direction = 1, speed = 1000 ) => {
@@ -32,18 +32,18 @@ board.on("ready", function () {
       	console.log("Current position: " + position);
     	});
     },
-    to: (loc) =>{
-      this.io.accelStepperSpeed(0, 1000);
+    to: (loc, speed = 1000) =>{
+      this.io.accelStepperSpeed(0, speed);
       this.io.accelStepperTo(0,loc);
     },
     loc: () => {
       console.log( this.io.accelStepperReportPosition(0) );
     },
 		enable: () => {
-			this.io.accelStepperEnable(0, false)
+			this.io.accelStepperEnable(0, true)
     },
     disable: () => {
-			this.io.accelStepperEnable(0, true)
+			this.io.accelStepperEnable(0, false)
     },
     zero: () => {
       this.io.accelStepperZero(0);

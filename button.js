@@ -4,7 +4,7 @@ var board = new five.Board();
 board.on("ready", function() {
 
   const button =  new five.Button({
-    pin: 2, 
+    pin: 26, 
     //isPulldown: true
     isPullup: true
   });
