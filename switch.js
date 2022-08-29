@@ -5,15 +5,15 @@ board.on("ready", function() {
 
   const swtch =  new five.Switch({
   	pin: 26, 
-		type: "NO"
+		type: "NC"
 	});
 
 	swtch.on("open", () => {
-    console.log("On");
+    console.log("Open");
   });
 
   swtch.on("close", () => {
-    console.log("Off");
+    console.log("Close");
   });
 
 });
