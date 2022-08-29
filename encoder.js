@@ -4,19 +4,19 @@ var board = new five.Board();
 board.on("ready", function () {
 
   board.io.encoderAttach({
-    encoderNum: 1,
-    encoderPin1: 21,
-    encoderPin2: 22,
+    encoderNum: 0,
+    encoderPin1: 14,
+    encoderPin2: 15,
  	});
 
-  board.io.on('encoder-position-1', (event)=>{
+  board.io.on('encoder-position-0', (event)=>{
     console.log(event);
   });
 
   board.io.encoderEnableReporting(true)
 
   // setInterval(() =>{
-  //   board.io.encoderReport(1, (event)=>{
+  //   board.io.encoderReport(0, (event)=>{
   //     console.log(event);
   //   });
   // }, 500)
