@@ -9,14 +9,22 @@ const DISABLED = !ENABLED;
 
 board.on("ready", function () {
 
-  /*let stepper = new five.Stepper({
-		type: five.Stepper.TYPE.DRIVER,
-		stepsPerRev: 1600,
-		pins: {
-			step: 3,
-			dir: 2
-		}
-	});*/
+	const swtch = new five.Switch({
+  	pin: 26, 
+		type: "NC"
+	});
+
+	swtch.on("open", () => {
+    console.log("Open");
+  });
+
+  swtch.on("close", () => {
+    console.log("Close");
+
+    // Disable the stepper
+    board.io.accelStepperEnable(0, DISABLED);
+  });
+
 
   board.io.accelStepperConfig({
 		deviceNum: 0,
@@ -38,7 +46,9 @@ board.on("ready", function () {
     },
     to: (loc, speed = 1000) =>{
       this.io.accelStepperSpeed(0, speed);
-      this.io.accelStepperTo(0,loc);
+      this.io.accelStepperTo(0,loc, (pos) =>{
+        console.log('At:', pos);
+      });
     },
     loc: () => {
       console.log( this.io.accelStepperReportPosition(0) );
