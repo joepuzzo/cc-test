@@ -22,7 +22,14 @@ board.on("ready", function () {
     console.log("Close");
 
     // Disable the stepper
-    board.io.accelStepperEnable(0, DISABLED);
+    //board.io.accelStepperEnable(0, DISABLED);
+    
+    // Stop the stepper 
+    board.io.accelStepperStop(0);
+
+		board.io.accelStepperReportPosition(0, (pos)=>{
+			console.log('Report', pos);
+		})
   });
 
 
