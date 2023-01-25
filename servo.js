@@ -4,7 +4,7 @@ var board = new five.Board();
 board.on("ready", function() {
 
   const servo = new five.Servo({
-    pin: 13,
+    pin: 10,
     startAt: 15
   });
 
